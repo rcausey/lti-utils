@@ -35,8 +35,7 @@ http = class Http
 					body: [body]
 
 				qio.request(request)
-					.then((_) -> _.body.read())
-					.then((_) -> deferred.resolve(Http.parse(_.toString())))
+					.then((_) -> deferred.resolve(_))
 					.catch((_) -> deferred.reject(_))
 					.done()
 
