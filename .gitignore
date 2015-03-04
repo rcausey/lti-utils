@@ -18,8 +18,5 @@
 *.idea
 *.iml
 
-# Build ignores.
-target
-
 # Project ignores.
 node_modules
