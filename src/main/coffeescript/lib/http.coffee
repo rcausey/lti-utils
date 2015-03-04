@@ -23,21 +23,7 @@ http = class Http
 
 		oauth.authorization(verb, oauthUrl, bilby.extend(payload, parameters), @consumerKey, @consumerSecret).cata(
 			success: (auth) ->
-				body = encode.url(bilby.extend(payload, auth))
-				request =
-					agent: @agent
-					headers:
-						'Content-Length': Buffer.byteLength(body, 'utf8')
-						'Content-Type': 'application/x-www-form-urlencoded'
-						'User-Agent': 'lti.js'
-					method: verb
-					url: requestUrl
-					body: [body]
-
-				qio.request(request)
-					.then((_) -> deferred.resolve(_))
-					.catch((_) -> deferred.reject(_))
-					.done()
+				deferred.resolve(bilby.extend(payload, auth))
 
 			failure: (_) -> deferred.reject(_)
 		)
