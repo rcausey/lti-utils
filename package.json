@@ -1,36 +1,18 @@
 {
-	"author": "Rocky Madden (http://rockymadden.com/)",
-	"config": {
-		"blanket": {"pattern": ["target/lib"]}
-	},
+	"name": "lti.js",
+	"author": "Rhys Causey",
+	"version": "1.0.0",
+	"description": "Learning Tools Interoperability library.",
+	"main": "index.js",
+  	"author": "Rhys Causey <rhys.causey@gmail.com>",
+  	"license": "MIT",
 	"dependencies": {
-		"bilby": "0.0.x",
-		"keep-alive-agent": "0.0.x",
-		"lazy.js": "0.3.x",
 		"oauth-sign": "0.4.x",
-		"q": "0.9.x",
-		"q-io": "1.11.x",
-		"truthy.js": "0.6.x"
+		"lodash": "^2.4.1"
 	},
-	"description": "Learning Tools Interoperability node.js library.",
-	"devDependencies": {
-		"coffee-script": "1.7.x",
-		"grunt": "0.4.x",
-		"grunt-cli": "0.1.x",
-		"grunt-contrib-coffee": "0.10.x",
-		"grunt-mocha-cov": "0.2.x",
-		"mocha": "1.18.x",
-		"mocha-term-cov-reporter": "0.2.x",
-		"should": "3.3.x"
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/rcausey/lti.js.git"
 	},
-	"engines": {"node": ">=0.10.0"},
-	"homepage": "http://rockymadden.com/lti.js/",
-	"keywords": ["lti", "learning tools interoperability", "oauth", "education", "edtech"],
-	"main": "target/lti.js",
-	"name": "lti",
-	"repository": {"type": "git", "url": "git://github.com/rockymadden/lti.js.git"},
-	"scripts": {
-		"prepublish": "grunt"
-	},
-	"version": "0.6.0"
+	"ignore": []
 }

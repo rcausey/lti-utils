@@ -1,49 +1,13 @@
-#lti.js [![Build Status](http://img.shields.io/travis-ci/rockymadden/lti.js.png)](http://travis-ci.org/rockymadden/lti.js) [![Generic](http://img.shields.io/coverage/99%25.png?color=brightgreen)]()
-Learning Tools Interoperability node.js library:
+# lti.js
 
-| Functionality | v1.1      | v1.1.1     | v2.0                         |
-|---------------| --------- | ---------- | ---------------------------- |
-| Tool Consumer | Supported | Supported  | Awaiting Final Specification |
-| Tool Provider | Queued    | Queued     | Awaiting Final Specification |
+LTI Consumer library based on lti.js library by Rocky Madden (http://rockymadden.com/lti.js/) 
 
-## Depending Upon
-The project is available on the [Node Packaged Modules registry](https://npmjs.org/package/lti). Add the dependency in your package.json file:
+## Licenses
 
-```javascript
-"dependencies": {
-	"lti": "0.6.x"
-}
+```
+Copyright (c) 2015 Rhys Causey
 ```
 
----
-
-## Usage (CoffeeScript)
-
-Create tool consumer:
-```coffeescript
-consumer = new lti.ToolConsumer('https://example.com/path/to/producer', 'key', 'secret')
-```
-
----
-
-Leverage tool consumer:
-```coffeescript
-consumer.withSession((session) ->
-	payload =
-		lti_version: 'LTI-1p0'
-		lti_message_type: 'basic-lti-launch-request'
-		resource_link_id: '0'
-
-	session.basicLaunch(payload)
-		.then((r) -> r.map((_) -> console.dir(_)))
-		.catch((e) -> console.dir(e))
-		.done()
-)
-```
-
----
-
-## License
 ```
 The MIT License (MIT)
 
