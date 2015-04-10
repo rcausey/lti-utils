@@ -23,7 +23,8 @@
 		"process": true,
 		"require": true,
 		"setTimeout": true,
-		"window": true
+		"window": true,
+		"Buffer": true
 	},
 	"latedef": true,
 	"laxbreak": true,
