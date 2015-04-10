@@ -1,18 +1,20 @@
 {
-	"name": "lti",
-	"author": "Rhys Causey",
-	"version": "1.0.0",
-	"description": "Learning Tools Interoperability library.",
-	"main": "index.js",
-  	"author": "Rhys Causey <rhys.causey@gmail.com>",
-  	"license": "MIT",
-	"dependencies": {
-		"oauth-sign": "0.4.x",
-		"lodash": "^2.4.1"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/rcausey/lti.js.git"
-	},
-	"ignore": []
+  "name": "lti",
+  "author": "Rhys Causey <rhys.causey@gmail.com>",
+  "version": "1.0.0",
+  "description": "Learning Tools Interoperability library.",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^2.9.24",
+    "lodash": "^3.6.0",
+    "node-uuid": "^1.4.3",
+    "oauth-sign": "0.4.x",
+    "xml2js": "^0.4.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rcausey/lti.js.git"
+  },
+  "ignore": []
 }
