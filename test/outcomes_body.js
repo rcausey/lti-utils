@@ -1,32 +1,27 @@
 var should = require('chai').should(),
-	_ = require('lodash'),
+	assert = require('chai').assert,
 	outcomesBody = require('../lib/lti').outcomesBody,
-	fs = require('fs'),
-	BPromise = require('bluebird');
-
-BPromise.promisifyAll(fs);
+	readSampleXml = require('./test-util').readSampleXml,
+	BPromise = require('bluebird'),
+	requestTypes = require('../lib/outcomes_constants').requestTypes;
 
 var validHash = outcomesBody.validHash,
 	parse = outcomesBody.parse;
 
-function readSampleBody() {
-	return fs.readFileAsync(
-		__dirname + '/../test_files/outcomes_read_result_request_body.xml', 
-		'utf-8'
-	);
-}
+var replaceFile = 'outcomes_request_replace.xml',
+	readFile = 'outcomes_request_read.xml';
 
 describe('outcomesBody', function() {
 	describe('validHash', function() {
 		it('should return false for invalid body hash', function(done) {
-			readSampleBody().then(function(content) {
+			readSampleXml(replaceFile).then(function(content) {
 				validHash(content, 'invalid_hash').should.be.false;
 				done();
 			});
 		});
 
 		it('should return true for valid body hash', function(done) {
-			readSampleBody().then(function(content) {
+			readSampleXml(replaceFile).then(function(content) {
 				validHash(content, 'ln3tIsK/E6zLkeRrgs6QhFLgXt4=').should.be.true;
 				done();
 			});
@@ -34,23 +29,44 @@ describe('outcomesBody', function() {
 	});
 
 	describe('parse', function() {
-		it('should correctly parse valid body', function(done) {
-			readSampleBody().then(function(content) {
-				parse(content).then(function(result) {
-					result.should.include.keys(
-						'type',
-						'messageId',
-						'sourcedId',
-						'score'	
-					);
+		it('should correctly parse valid replace body', function(done) {
+			readSampleXml(replaceFile).then(parse).then(function(result) {
+				result.should.include.keys(
+					'type',
+					'messageId',
+					'sourcedId',
+					'score'	
+				);
 
-					result.type.should.equal('replace');
-					result.messageId.should.equal('999999123');
-					result.sourcedId.should.equal('3124567');
-					result.score.should.equal('0.92');
+				result.type.should.equal(requestTypes.replace);
+				result.messageId.should.equal('999999123');
+				result.sourcedId.should.equal('3124567');
+				result.score.should.equal('0.92');
 
-					done();
-				});
+				done();
+			});
+		});
+
+		it('should correctly parse valid read body', function(done) {
+			readSampleXml(replaceFile).then(parse).then(function(result) {
+				result.should.include.keys(
+					'type',
+					'messageId',
+					'sourcedId',
+					'score'	
+				);
+
+				result.type.should.equal(requestTypes.replace);
+				result.messageId.should.equal('999999123');
+				result.sourcedId.should.equal('3124567');
+
+				done();
+			});
+		});
+
+		it('should throw an error with an invalid xml body', function(done) {
+			parse('<xml>blah').then(assert.fail).catch(function(e) {
+				done();
 			});
 		});
 	});

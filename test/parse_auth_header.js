@@ -1,5 +1,4 @@
 var should = require('chai').should(),
-	_ = require('lodash'),
 	parseAuthHeader = require('../lib/lti').parseAuthHeader;
 
 describe('parseAuthHeader', function() {

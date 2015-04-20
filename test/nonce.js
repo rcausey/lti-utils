@@ -1,11 +1,11 @@
 var should = require('chai').should(),
-	_ = require('lodash'),
-	nonce = require('../lib/lti').nonce;
+	nonce = require('../lib/lti').nonce,
+	testNonce = require('./test-util').testNonce;
 
 describe('nonce', function() {
 	it('should return random 32-digit hexadecimal string', function(done) {
 		nonce().should.not.equal(nonce());
-		/[0-9A-Za-z]{32}/.test(nonce()).should.be.true;
+		testNonce(nonce()).should.be.true;
 
 		done();
 	});
