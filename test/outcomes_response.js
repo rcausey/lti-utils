@@ -3,7 +3,7 @@ var outcomesConstants = lti.outcomesConstants;
 
 var should = require('chai').should(),
 	outcomesResponse = lti.outcomesResponse,
-	readSampleXml = require('./test-util').readSampleXml,
+	readSampleXml = require('./test_util').readSampleXml,
 	requestTypes = outcomesConstants.requestTypes,
 	codeMajor = outcomesConstants.codeMajor,
 	severity = outcomesConstants.severity;
@@ -18,7 +18,7 @@ describe('outcomesResponse', function() {
 				'sourcedId',
 				'0.92',
 				'messageId');
-				
+
 			should.equal(response, content);
 			
 			done();

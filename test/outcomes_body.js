@@ -1,7 +1,7 @@
 var should = require('chai').should(),
 	assert = require('chai').assert,
 	outcomesBody = require('../lib/lti').outcomesBody,
-	readSampleXml = require('./test-util').readSampleXml,
+	readSampleXml = require('./test_util').readSampleXml,
 	BPromise = require('bluebird'),
 	requestTypes = require('../lib/outcomes_constants').requestTypes;
 

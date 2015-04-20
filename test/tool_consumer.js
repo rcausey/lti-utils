@@ -1,7 +1,7 @@
 var should = require('chai').should(),
 	_ = require('lodash'),
 	toolConsumer = require('../lib/lti').toolConsumer,
-	testUtil = require('./test-util'),
+	testUtil = require('./test_util'),
 	oauthSign = require('oauth-sign');
 
 describe('toolConsumer', function() {
